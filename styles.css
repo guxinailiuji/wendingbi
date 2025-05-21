@@ -1,0 +1,207 @@
+/* 自定义样式，补充Tailwind CSS */
+
+/* 平滑滚动 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 页面渐变背景 */
+body {
+    background: linear-gradient(to bottom, #f7f9fc, #eef2f7);
+}
+
+/* 增强引用框效果 */
+blockquote {
+    position: relative;
+    padding: 1.5rem;
+    background-color: #f8fafc;
+    border-left: 4px solid #3b82f6;
+    margin: 1.5rem 0;
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+blockquote p {
+    font-style: italic;
+}
+
+/* 自定义卡片悬停效果 */
+.hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* 增强导航栏的粘性效果 */
+nav.sticky {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+/* 强调文本效果 */
+.text-highlight {
+    background: linear-gradient(to right, #3b82f6, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+/* 增强分隔线效果 */
+.divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(59, 130, 246, 0.5), transparent);
+    margin: 2rem 0;
+}
+
+/* 阅读时间指示器 */
+.progress-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 4px;
+    z-index: 1000;
+}
+
+.progress-bar {
+    height: 4px;
+    background: #3b82f6;
+    width: 0%;
+}
+
+/* 板块闪烁动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+/* 为每个板块设置不同的动画延迟，创造瀑布效果 */
+section:nth-child(1) { animation-delay: 0.1s; }
+section:nth-child(2) { animation-delay: 0.3s; }
+section:nth-child(3) { animation-delay: 0.5s; }
+section:nth-child(4) { animation-delay: 0.7s; }
+section:nth-child(5) { animation-delay: 0.9s; }
+section:nth-child(6) { animation-delay: 1.1s; }
+
+/* 当板块进入视口时重新触发动画 */
+section.animate {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* 板块标题颜色 */
+.section-title-1 { background: linear-gradient(135deg, #3b82f6, #2563eb); } /* 蓝色 */
+.section-title-2 { background: linear-gradient(135deg, #10b981, #059669); } /* 绿色 */
+.section-title-3 { background: linear-gradient(135deg, #f59e0b, #d97706); } /* 橙色 */
+.section-title-4 { background: linear-gradient(135deg, #8b5cf6, #7c3aed); } /* 紫色 */
+.section-title-5 { background: linear-gradient(135deg, #ec4899, #db2777); } /* 粉色 */
+.section-title-6 { background: linear-gradient(135deg, #6366f1, #4f46e5); } /* 靛蓝色 */
+
+/* 标题闪烁动画 */
+@keyframes titleGlow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+}
+
+.section-title {
+    animation: titleGlow 2s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+.section-title:hover {
+    transform: translateY(-2px);
+    animation: titleGlow 1s ease-in-out infinite;
+}
+
+/* 重点内容高亮效果 */
+@keyframes highlightPulse {
+    0% {
+        background-color: rgba(243, 244, 246, 0.7);
+        box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+    }
+    50% {
+        background-color: rgba(239, 246, 255, 0.9);
+        box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+    }
+    100% {
+        background-color: rgba(243, 244, 246, 0.7);
+        box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+    }
+}
+
+.key-highlight {
+    position: relative;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    border-left: 4px solid #3b82f6;
+    font-weight: 600;
+    animation: highlightPulse 3s ease-in-out infinite;
+}
+
+/* 专家观点样式 */
+.expert-quote {
+    position: relative;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    background-color: rgba(249, 250, 251, 0.8);
+    border-left: 4px solid #6366f1;
+    border-radius: 0 0.5rem 0.5rem 0;
+    font-style: italic;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.expert-quote::before {
+    content: """;
+    position: absolute;
+    top: 0;
+    left: 0.5rem;
+    font-size: 3rem;
+    color: rgba(99, 102, 241, 0.2);
+    line-height: 1;
+}
+
+.expert-name {
+    display: block;
+    margin-top: 0.75rem;
+    font-weight: 600;
+    font-style: normal;
+    color: #4f46e5;
+}
+
+.expert-title {
+    display: block;
+    font-size: 0.875rem;
+    font-style: normal;
+    color: #6b7280;
+}
+
+/* 关键数据高亮 */
+.key-data {
+    display: inline-block;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    margin: 0 0.125rem;
+}

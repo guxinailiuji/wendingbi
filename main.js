@@ -127,14 +127,14 @@ async function loadStablecoinData() {
         const chartColors = [
             '#4299E1', // USDT - 蓝色
             '#48BB78', // USDC - 绿色
-            '#F6AD55', // BUSD - 橙色
-            '#FC8181', // DAI - 红色
-            '#9F7AEA', // TUSD - 紫色
-            '#667EEA', // USDD - 靛蓝色
-            '#F687B3', // USDP - 粉色
-            '#B794F4', // GUSD - 淡紫色
-            '#68D391', // FRAX - 浅绿色
-            '#4FD1C5', // LUSD - 青色
+            '#F6AD55', // USDS - 橙色
+            '#FC8181', // USDE - 红色
+            '#9F7AEA', // DAI - 紫色
+            '#667EEA', // SUSDS - 靛蓝色
+            '#ECC94B', // USD1 - 金色
+            '#F687B3', // FDUSD - 粉色
+            '#B794F4', // PYUSD - 淡紫色
+            '#805AD5', // XAUT - 深紫色
         ];
         
         // 计算总市值
@@ -441,9 +441,9 @@ function renderBarChart(labels, data, colors) {
                     ticks: {
                         callback: function(value) {
                             if (value >= 1000000000) {
-                                return '$' + (value / 1000000000).toFixed(1) + 'B';
+                                return '$' + (value / 100000000).toFixed(1) + '亿';
                             } else if (value >= 1000000) {
-                                return '$' + (value / 1000000).toFixed(1) + 'M';
+                                return '$' + (value / 10000).toFixed(1) + '万';
                             }
                             return '$' + value;
                         }
@@ -457,9 +457,9 @@ function renderBarChart(labels, data, colors) {
 // 格式化货币数值
 function formatCurrency(value) {
     if (value >= 1000000000) {
-        return '$' + (value / 1000000000).toFixed(2) + '十亿';
+        return '$' + (value / 100000000).toFixed(2) + '亿';
     } else if (value >= 1000000) {
-        return '$' + (value / 1000000).toFixed(2) + '百万';
+        return '$' + (value / 10000).toFixed(2) + '万';
     } else {
         return '$' + value.toLocaleString();
     }
@@ -483,6 +483,13 @@ function addStablecoinTypeLabels(stablecoins) {
         'susd': '合成型',
         'musd': '混合型',
         'ust': '算法稳定币(已崩盘)',
+        'usd1': '资产支持型',
+        'usds': '资产支持型',
+        'usde': '合成型',
+        'susds': '资产支持型',
+        'fdusd': '资产支持型',
+        'pyusd': '资产支持型',
+        'xaut': '黄金支持型',
     };
     
     // 创建稳定币类型表格
@@ -555,6 +562,8 @@ function getTypeColorClass(type) {
             return 'bg-yellow-100 text-yellow-800';
         case '算法稳定币(已崩盘)':
             return 'bg-red-100 text-red-800';
+        case '黄金支持型':
+            return 'bg-amber-100 text-amber-800';
         default:
             return 'bg-gray-100 text-gray-800';
     }
